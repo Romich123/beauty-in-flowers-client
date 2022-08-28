@@ -1,0 +1,78 @@
+.tag {
+    display: inline-block;
+    margin: 0;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 7px;
+    border-color: green;
+    color: green;
+    transition-duration: .2s;
+}
+
+.tag.not-active:hover {
+    cursor: auto !important;
+    background-color: white !important;
+    color: green !important;
+}
+
+.tag:hover {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+.tag-active {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+.add-basket-card {
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(176, 176, 176, 0.8);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(176, 176, 176, 0.8);
+    box-shadow: 0px 0px 15px 0px rgba(176, 176, 176, 0.8);
+    border-radius: 10px;
+    min-width: 300px;
+}
+
+.tag-bar {
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(87, 87, 87, 1);
+    -moz-box-shadow: 0px 0px 15px 0px rgb(87, 87, 87);
+    box-shadow: 0px 0px 15px 0px rgba(87, 87, 87, 1);
+    border-radius: 7px;
+    padding-top: 6px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top: 0;
+    padding: 0px;
+}
+
+.phone-input {
+    width: 100% !important
+}
+
+.comment-card {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(176, 176, 176, 0.8);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(176, 176, 176, 0.8);
+    box-shadow: 0px 0px 5px 0px rgba(176, 176, 176, 0.8);
+    border-radius: 10px;
+}
+
+.carousel-container {
+    width: 100%;
+}
+
+.slider-button {
+    -webkit-box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.1);
+    -moz-box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.1);
+    box-shadow: 0px 0px 10px 5px rgba(34, 60, 80, 0.1);
+}
