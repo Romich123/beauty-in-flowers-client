@@ -20,7 +20,6 @@ const AllOrders = ({show, onHide}) => {
         setOrders([].concat(orders))
     }
 
-
     return (
         <Modal show={show} onHide={onHide} size="lg" centered>
             <Modal.Header closeButton>

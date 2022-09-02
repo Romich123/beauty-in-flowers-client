@@ -34,8 +34,8 @@ export const setFlowersInBasket = async (flowers) => {
     return data
 }
 
-export const convertToOrder = async (address, phone) => {
-    const {data} = await $authHost.post('api/basket/toorder', { address: address, phone: phone })
+export const convertToOrder = async (address, phone, selfDelivery) => {
+    const {data} = await $authHost.post('api/basket/toorder', { address: address, phone: phone, selfDelivery: selfDelivery })
     return data
 }
 

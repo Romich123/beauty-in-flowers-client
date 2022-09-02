@@ -11,7 +11,7 @@ const Shop = () => {
 
     const [activePage, setActivePage] = useState(1)
 
-    const [searchParams, setSearchParams] = useState({minPrice: undefined, maxPrice: undefined, tags: []})
+    const [searchParams, setSearchParams] = useState({minPrice: 0, maxPrice: undefined, tags: []})
 
     const flowersOnPage = 48
     const pageCount = Math.ceil(flower.flowersCount / flowersOnPage)
@@ -46,6 +46,11 @@ const Shop = () => {
         const loadFlowers = () => {
             getFlowers(searchParams.tags, activePage, flowersOnPage, searchParams.minPrice, searchParams.maxPrice).then(data => { 
                 if (data instanceof AxiosError) {
+                    loadFlowers()
+                    return
+                }
+
+                if (data == null) {
                     loadFlowers()
                     return
                 }

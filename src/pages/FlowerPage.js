@@ -241,7 +241,7 @@ const FlowerPage = () => {
                                 </Button>
                             }
                             <div style={{color:"gray", fontSize:13}}>
-                                Доставим за неделю!
+                                Доставим за час!
                             </div>
                         </div>
                     </Container>
