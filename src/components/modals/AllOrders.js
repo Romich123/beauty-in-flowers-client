@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Row, Col, Form, Container, InputGroup, Dropdown, Accordion, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,14 @@ const AllOrders = ({show, onHide}) => {
 
     useEffect(() => {
         getAllOrders().then(data => {
+            if (data instanceof AxiosError) {
+                return
+            }
+
+            if (data == null) {
+                return
+            }
+
             setOrders(data)
         })
     }, [])
