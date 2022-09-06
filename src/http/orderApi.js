@@ -11,7 +11,7 @@ export const getAllOrders = async () => {
 
 export const deleteOrder = async (id) => {
     try {
-        const {data} = await $authHost.delete('api/order/' + id)
+        const {data} = await $authHost.delete('api/order/delete/' + id)
         return data
     } catch (e) {
         return e

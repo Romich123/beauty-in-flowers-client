@@ -10,7 +10,7 @@ const CreateOrder = ({onHide, show, onConfirmed}) => {
     const [comment, setComment] = useState("")
     const [apartment, setApartment] = useState("")
     const [phone, setPhone] = useState()
-    const [selfDelivery, setSelfDelivery] = useState({ enabled: false, day: "2022-01-01", time: "14:00:00" })
+    const [selfDelivery, setSelfDelivery] = useState({ enabled: false, day: "", time: "" })
     const [alertMessage, setAlertMessage] = useState({ display: false, message: ""})
 
     const hide = () => {
@@ -28,23 +28,52 @@ const CreateOrder = ({onHide, show, onConfirmed}) => {
     }
 
     const confirm = () => {
-        if (street === "") {
-            alert('Введите улицу')
-            return
-        }
-
-        if (house === "") {
-            alert('Введите дом')
-            return
-        }
-
         if (!phone || phone.toString().length !== 11)
         {
             alert('Неверный телефон')
             return
         }
 
-        convertToOrder(street + ' ' + house + ' ' + apartment, phone, selfDelivery.enabled ? "Да " + selfDelivery.day + ' ' + selfDelivery.time : "Нет")
+        if (selfDelivery.enabled) {
+            if (selfDelivery.day === "" || selfDelivery.day === "") {
+                alert('Пожалуйста, выберите день и время.')
+                return
+            }
+
+            const date = new Date(selfDelivery.day + ' ' + selfDelivery.time)
+
+            if (date.getHours() < 9  || date.getHours() > 20) {
+                alert('Мы выдаем заказы с 9:00 до 20:00, пожалуйста, выберите время в этом промежутке.')
+                return
+            }
+
+            const timeFromNow = date - new Date()
+
+            if (timeFromNow / 1000 / 60 / 60 <= 2) {
+                alert('Врядли мы сможем успеть меньше, чем за 2 часа, пожалуйста, выберите время попозже.')
+                return
+            }
+
+            convertToOrder(street + ' ' + house + ' ' + apartment, phone, "Да " + selfDelivery.day + ' ' + selfDelivery.time, comment)
+        } else {
+            if (street === "") {
+                alert('Введите улицу')
+                return
+            }
+    
+            if (house === "") {
+                alert('Введите дом')
+                return
+            }
+
+            if (apartment === "") {
+                alert('Введите квартиру')
+                return
+            }
+
+            convertToOrder(street + ' ' + house + ' кв. ' + apartment, phone, "Нет", comment)
+        }
+
         onConfirmed()
         hide()
     }

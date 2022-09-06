@@ -45,8 +45,6 @@ const UserOrders = () => {
             if (data instanceof AxiosError) {
                 return
             }
-
-
         }).catch(e => {
             console.log(e)
         })
@@ -74,9 +72,17 @@ const UserOrders = () => {
                             <span style={{fontWeight:"bold"}}>
                                 {`Заказ #${order.id}`}
                             </span>
+
                             <div style={{marginLeft:5}}>
                                 <Badge bg={order.confirmCode === "" ? "success" : "secondary"}>{order.status}</Badge> 
                             </div>
+                            {order.selfDelivery.toLowerCase().startsWith("да") ?
+                                <div style={{marginLeft:5}}>
+                                    <Badge bg={"success"}>Самовывоз</Badge> 
+                                </div>
+                                :
+                                <></>
+                            }
                         </Accordion.Header>
                         <Accordion.Body>
                             <Stack>
@@ -111,9 +117,19 @@ const UserOrders = () => {
                                     )})}
                                 </Stack>
 
+                                {order.selfDelivery.toLowerCase().startsWith("да") ?
+                                    <div>
+                                        Самовывоз {new Date(order.selfDelivery.substring(2)).toLocaleDateString()} в {new Date(order.selfDelivery.substring(2)).toTimeString().substring(0, 8)} по адресу Красный проспект 102/1
+                                    </div>
+                                    :
+                                    <div>
+                                        Доставка по адресу {order.address}
+                                    </div>
+                                }
+
                                 <Row className="mt-2">
                                     {order.confirmCode === "" ?
-                                        <div></div>
+                                        <></>
                                         :
                                         <Col style={{paddingRight:0}} xs={"auto"}>
                                             <InputGroup>
@@ -124,7 +140,7 @@ const UserOrders = () => {
                                     }
                                     
                                     {order.status !== "Подтвержден" ?
-                                        <div></div>
+                                        <></>
                                         :
                                         <Col className="ml-auto">
                                             <Button variant="secondary" onClick={() => cancelOrder(index)}> Отменить </Button>

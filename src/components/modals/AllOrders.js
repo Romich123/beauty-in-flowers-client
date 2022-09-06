@@ -61,12 +61,21 @@ const AllOrders = ({show, onHide}) => {
                                             <Form.Control readOnly defaultValue={order.phone} />
                                         </InputGroup>
 
-                                        <InputGroup className="mb-1">
-                                            <InputGroup.Text xs="2" style={{fontWeight:"bold"}}>
-                                                Адрес
-                                            </InputGroup.Text>
-                                            <Form.Control as="textarea" readOnly defaultValue={order.address} />
-                                        </InputGroup>
+                                        {order.selfDelivery.toLowerCase().startsWith("да") ?
+                                            <InputGroup className="mb-1">
+                                                <InputGroup.Text xs="2" style={{fontWeight:"bold"}}>
+                                                    Самовывоз
+                                                </InputGroup.Text>
+                                                <Form.Control as="textarea" readOnly defaultValue={new Date(order.selfDelivery.substring(2)).toLocaleDateString() + " в " + new Date(order.selfDelivery.substring(2)).toTimeString().substring(0, 8)} />
+                                            </InputGroup>
+                                            :
+                                            <InputGroup className="mb-1">
+                                                <InputGroup.Text xs="2" style={{fontWeight:"bold"}}>
+                                                    Адрес
+                                                </InputGroup.Text>
+                                                <Form.Control as="textarea" readOnly defaultValue={order.address} />
+                                            </InputGroup>
+                                        }
 
                                         <InputGroup className="mb-1">
                                             <InputGroup.Text xs="2" style={{fontWeight:"bold"}}>

@@ -94,8 +94,6 @@ const FlowerPage = () => {
 
     const isUserDeliveredDisplayFlower = user.deliveredFlowers.some(deliveredFlower => deliveredFlower.flowerId === displayFlower.id)
 
-    console.log(user)
-
     const confirmComment = () => {
         sendFeedBack(userTempRating.rating, comment, displayFlower.id)
         displayFlower.feedbacks = displayFlower.feedbacks.concat({rating: userTempRating.rating, comment: comment, userId: user.user.id, flowerId: displayFlower.id, updatedAt: new Date()})
@@ -221,7 +219,7 @@ const FlowerPage = () => {
                             </div>
 
                             <div style={{color:"gray"}}>
-                                Доставка входит в цену!
+                                Цена доставки будет расчитана при оплате.
                             </div>
                         </div>
 
@@ -241,7 +239,7 @@ const FlowerPage = () => {
                                 </Button>
                             }
                             <div style={{color:"gray", fontSize:13}}>
-                                Доставим за час!
+                                Доставка от 1 часа!
                             </div>
                         </div>
                     </Container>

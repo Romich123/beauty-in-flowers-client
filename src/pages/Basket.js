@@ -133,7 +133,7 @@ const Basket = () => {
                 </Col>
 
                 <Col lg={3}>
-                    <Card className="p-3">
+                    <Card className="p-3" style={{height:177}}>
                         <Stack>
                             <Stack direction="horizontal" gap={3}>
                                 <div style={{fontSize:24, fontWeight:"bold"}}>
@@ -155,17 +155,7 @@ const Basket = () => {
                                 </div>
                             </Stack>
                             
-                            <Stack direction="horizontal" gap={3}>
-                                <div style={{color:"gray", fontSize:16}}>
-                                    Доставка
-                                </div>
-
-                                <div className="ms-auto" style={{color:"gray", fontSize:18}}>
-                                    {formatPrice(flowersCost === 0 ? 0 : deliveryCost)}
-                                </div>
-                            </Stack>
-
-                            <Button variant="success" className="mt-3" disabled={basket.length === 0} onClick={() => setShowCreate(true)}>
+                            <Button variant="success" style={{marginTop:"auto"}} disabled={basket.length === 0} onClick={() => setShowCreate(true)}>
                                 Заказать
                             </Button>
                         </Stack>
