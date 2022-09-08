@@ -16,6 +16,7 @@ const Basket = () => {
     const [showConfirm, setShowConfirm] = useState(false)
 
     const flowersCost = basket.reduce((summ, basketFlower) => summ + basketFlower.flower.price * basketFlower.count, 0)
+
     const overallCost = flowersCost + (flowersCost === 0 ? 0 : deliveryCost)
 
     const formatPrice = (price) => {
@@ -36,7 +37,7 @@ const Basket = () => {
         loading.addLoadingOperation()
         loading.addLoadingOperation()
         
-        getBasket().then(data => setBasket(data)).finally(loadedOne)
+        getBasket().then(data => setBasket(data.filter(basketFlower => basketFlower.flower))).finally(loadedOne)
         getInfo().then(data => setDeliveryCost(data.deliveryCost)).finally(loadedOne)
     }, [setBasket, loading])
 

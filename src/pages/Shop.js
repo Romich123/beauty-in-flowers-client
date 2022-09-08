@@ -55,7 +55,8 @@ const Shop = () => {
                     return
                 }
     
-                flower.setFlowers(data.rows)
+                console.log(data.rows)
+                flower.setFlowers(data.rows.reverse())
                 flower.setFlowersCount(data.count)
                 flower.setMaxPrice(Math.max(...data.rows.map(flower => flower.price)))
                 loadedOne()
@@ -70,7 +71,7 @@ const Shop = () => {
     return (
         <Container>
             <Row className="mt-4">
-                <Col sm={"auto"} lg={3}>
+                <Col md={12} lg={3}>
                     <SearchBar params={searchParams} onParamsChange={setSearchParams}/>
                 </Col>
                 <Col sm={12} lg={9}>
