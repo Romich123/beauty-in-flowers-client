@@ -54,8 +54,7 @@ const Shop = () => {
                     loadFlowers()
                     return
                 }
-    
-                console.log(data.rows)
+                
                 flower.setFlowers(data.rows.reverse())
                 flower.setFlowersCount(data.count)
                 flower.setMaxPrice(Math.max(...data.rows.map(flower => flower.price)))
